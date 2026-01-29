@@ -42,55 +42,58 @@ export default function FinalJeopardy({ route, navigation }) {
         .filter((score) => score.player_id === player.id)
         .reduce(reducer, 0)
       : 0;
+
+    const canSubmitWager = input[index].wager <= currentScore && input[index].wager !== ''
+
+    const renderWagerPressable = (isCorrect) => (
+      <Pressable
+        style={[
+          buttons.wager,
+          canSubmitWager
+            ? { backgroundColor: isCorrect ? 'green' : 'red' }
+            : { backgroundColor: 'grey' },
+        ]}
+        onPress={() => handleSubmit(index, player.id, -1)}
+      >
+        <Text style={text.smallCentered}>{isCorrect ? 'Correct' : 'Incorrect'}</Text>
+      </Pressable>
+    )
+
     return (
       <View style={{ marginBottom: 30 }} key={index}>
         <Text style={[text.scoreHistory, { textAlign: 'center' }]}>
           {player.name}
         </Text>
         <Text style={text.score}>Score: {currentScore}</Text>
-        <View style={styles.buttonRowContainer}>
-          <TextInput
-            style={[
-              styles.marginedInput,
-              { display: input[index].submitted ? 'none' : 'flex' },
-            ]}
-            onChangeText={(value) => handleChange(index, value)}
-            value={input[index].wager}
-            maxLength={6}
-            keyboardType="number-pad"
-            placeholder="Add wager..."
-            placeholderTextColor={colors.placeholderText}
-          />
-        </View>
-        <View
-          style={[
-            styles.buttonRowContainer,
-            { display: input[index].submitted ? 'none' : 'flex' },
-          ]}
-        >
-          <Pressable
-            style={[
-              buttons.wager,
-              input[index].wager <= currentScore && input[index].wager !== ''
-                ? { backgroundColor: 'red' }
-                : { backgroundColor: 'grey' },
-            ]}
-            onPress={() => handleSubmit(index, player.id, -1)}
-          >
-            <Text style={text.smallCentered}>Incorrect</Text>
-          </Pressable>
-          <Pressable
-            style={[
-              buttons.wager,
-              input[index].wager <= currentScore && input[index].wager !== ''
-                ? { backgroundColor: 'green' }
-                : { backgroundColor: 'grey' },
-            ]}
-            onPress={() => handleSubmit(index, player.id, 1)}
-          >
-            <Text style={text.smallCentered}>Correct</Text>
-          </Pressable>
-        </View>
+
+        {currentScore < 1 ?
+          <Text style={text.smallCentered}>Sorry, you don't have enough points to wager!</Text>
+          :
+          <View>
+            <View style={styles.buttonRowContainer}>
+              <TextInput
+                style={[
+                  styles.marginedInput,
+                  { display: input[index].submitted ? 'none' : 'flex' },
+                ]}
+                onChangeText={(value) => handleChange(index, value)}
+                value={input[index].wager}
+                maxLength={6}
+                keyboardType="number-pad"
+                placeholder="Add wager..."
+                placeholderTextColor={colors.placeholderText}
+              />
+            </View>
+            <View
+              style={[
+                styles.buttonRowContainer,
+                { display: input[index].submitted ? 'none' : 'flex' },
+              ]}
+            >
+              {renderWagerPressable(false)}
+              {renderWagerPressable(true)}
+            </View>
+          </View>}
         <View
           style={[
             styles.buttonRowContainer,
@@ -99,7 +102,7 @@ export default function FinalJeopardy({ route, navigation }) {
         >
           <Text style={text.mainText}>Submitted!</Text>
         </View>
-      </View>
+      </View >
     );
   };
 
