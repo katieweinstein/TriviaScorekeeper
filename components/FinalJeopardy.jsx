@@ -11,7 +11,6 @@ export default function FinalJeopardy({ route, navigation }) {
 
   const [input, setInput] = React.useState(players);
   const [scores, setScores] = React.useState([]);
-  const [submissionCount, setSubmissionCount] = React.useState(0);
 
   function handleChange(index, value) {
     setInput([...input, (input[index].wager = value)]);
@@ -20,21 +19,11 @@ export default function FinalJeopardy({ route, navigation }) {
   function handleSubmit(index, playerId, multiplier) {
     addMoveToDB(playerId, gameId, input[index].wager * multiplier);
     setInput([...input, (input[index].submitted = true)]);
-    setSubmissionCount(submissionCount + 1);
   }
 
   React.useEffect(() => {
     getMovesForGame(setScores, gameId);
   }, []);
-
-  React.useEffect(() => {
-    submissionCount === players.length
-      ? navigation.navigate('FinalScores', {
-        players: players,
-        gameId: gameId,
-      })
-      : null;
-  }, [submissionCount]);
 
   const wagerInput = (player, index) => {
     const currentScore = scores.length
@@ -113,6 +102,15 @@ export default function FinalJeopardy({ route, navigation }) {
     >
       <Text style={text.finalJeopardyTitle}>Final Jeopardy</Text>
       {players.map((player, index) => wagerInput(player, index))}
+      <Pressable
+        style={buttons.finalJeopardy}
+        onPress={() => navigation.navigate('FinalScores', {
+          players: players,
+          gameId: gameId,
+        })}
+      >
+        <Text style={text.smallCentered}>See Final Scores</Text>
+      </Pressable>
     </KeyboardAwareScrollView>
   );
 }
