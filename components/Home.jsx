@@ -4,6 +4,16 @@ import { Text, View, Image, Pressable } from 'react-native';
 import { styles, buttons, text } from './styles/styles';
 
 export default function Home({ navigation }) {
+  const privacyPolicyUrl = 'https://katieweinstein.github.io'
+
+  const handlePress = React.useCallback(async () => {
+    const supported = await Linking.canOpenURL(privacyPolicyUrl);
+
+    if (supported) {
+      await Linking.openURL(privacyPolicyUrl);
+    }
+  }, [privacyPolicyUrl]);
+
   return (
     <View style={[styles.container, { justifyContent: 'center' }]}>
       <Image
@@ -19,6 +29,9 @@ export default function Home({ navigation }) {
         }
       >
         <Text style={text.mainText}>New Game</Text>
+      </Pressable>
+      <Pressable onPress={handlePress} style={[buttons.addPlayerButton, { padding: 7 }]}>
+        <Text style={text.smallCentered}>Privacy Policy</Text>
       </Pressable>
     </View>
   );

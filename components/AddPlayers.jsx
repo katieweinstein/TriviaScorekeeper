@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Pressable } from 'react-native';
 import AddPlayersModal from './AddPlayersModal';
 import PlayerList from './PlayerList';
-import { styles, buttons, text } from './styles/styles';
+import { styles, buttons, text, colors } from './styles/styles';
 import { addGameToDB } from '../api/games';
 
 export default function AddPlayers({ navigation }) {
@@ -11,9 +11,7 @@ export default function AddPlayers({ navigation }) {
   const [playersInGame, setPlayersInGame] = React.useState([]);
 
   async function addGame() {
-    console.log("***")
     const data = await addGameToDB(playersInGame);
-    console.log("******")
     return data.gameId;
   }
 
@@ -37,7 +35,7 @@ export default function AddPlayers({ navigation }) {
           onPress={() => setModalVisible(true)}
           style={buttons.addPlayerButton}
         >
-          <Text style={text.buttonText}>Add New Player</Text>
+          <Text style={text.smallCentered}>+ Add New Player</Text>
         </Pressable>
         <Pressable
           onPress={async () => {
@@ -47,17 +45,19 @@ export default function AddPlayers({ navigation }) {
               gameId: id,
             });
           }}
-          // onPress={() =>
-          //   navigation.navigate('Scoreboard', { playersInGame: playersInGame })
-          // }
-          style={
-            playersInGame.length ? buttons.nextButton : buttons.disabledButton
-          }
+          style={[buttons.startGameButton, {
+            backgroundColor: playersInGame.length ? colors.darkGold : colors.buttonDisabledBackground, borderColor: playersInGame.length ? colors.lightGold : colors.buttonDisabledBorder
+          }]}
           disabled={!playersInGame.length}
         >
           <Text style={text.buttonText}>Start Game</Text>
         </Pressable>
+        <Text style={[text.smallCentered, { marginBottom: 10 }]}>
+          {playersInGame.length} player{playersInGame.length !== 1 && 's'}{' '}
+        selected.
+      </Text>
+        <Text style={text.smallCentered}>Max 6 players per game.</Text>
       </View>
-    </View>
+    </View >
   );
 }

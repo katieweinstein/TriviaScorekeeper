@@ -1,6 +1,6 @@
-# Jeopardy Scorekeeper
+# Trivia Scorekeeper
 
-Jeopardy Scorekeeper is an in-progress iOS project by Katie Weinstein. It is designed to be a quick and easy way to score at-home Jeopardy games with friends and family by tracking players, games, and scores.
+Trivia Scorekeeper is an in-progress iOS project by Katie Weinstein. It is designed to be a quick and easy way to score at-home Jeopardy games with friends and family by tracking players, games, and scores.
 
 ## Installation
 
