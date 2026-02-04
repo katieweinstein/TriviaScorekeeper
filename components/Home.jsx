@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View, Image, Pressable } from 'react-native';
+import { Text, View, Image, Pressable, Linking } from 'react-native';
 import { styles, buttons, text } from './styles/styles';
 
 export default function Home({ navigation }) {
-  const privacyPolicyUrl = 'https://katieweinstein.github.io'
+  const privacyPolicyUrl = 'https://katieweinstein.github.io/TriviaScorekeeper/privacypolicy'
 
   const handlePress = React.useCallback(async () => {
-    const supported = await Linking.canOpenURL(privacyPolicyUrl);
-
-    if (supported) {
+    try {
       await Linking.openURL(privacyPolicyUrl);
+    } catch (err) {
+      console.error('Failed to open URL:', err);
     }
   }, [privacyPolicyUrl]);
 
