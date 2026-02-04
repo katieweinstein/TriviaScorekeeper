@@ -62,6 +62,5 @@ If the App’s functionality changes in a way that affects user privacy, this Pr
 
 If you have any questions about this Privacy Policy, you may contact:
 
-Katie Weinstein (Personal Developer)
-
+Katie Weinstein (Personal Developer),
 Email: triviascorekeeper@gmail.com
