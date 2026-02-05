@@ -57,12 +57,12 @@ export default function DailyDoubleModal({
             <Text style={text.score}>
               Max wager: ${determineMaximumWager()}
             </Text>
-            <Text style={text.score}>Min wager: $5</Text>
+            <Text style={text.score}>Min wager: $100000</Text>
           </View>
           {input > 0 ? (
-            <View style={[styles.buttonRowContainer, { marginTop: 20 }]}>
+            <View style={[styles.buttonRowContainer, { marginTop: 100 }]}>
               <Pressable
-                style={[buttons.wager, { backgroundColor: 'red' }]}
+                style={[buttons.wager, { backgroundColor: 'pink', marginTop: 20 }]}
                 onPress={() => handlePress(-1)}
               >
                 <Text style={text.smallCentered}>${input * -1}</Text>
