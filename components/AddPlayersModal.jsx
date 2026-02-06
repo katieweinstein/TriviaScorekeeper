@@ -21,7 +21,7 @@ export default function AddPlayersModal({
       }}
     >
       <View style={styles.centeredView}>
-        <View style={styles.modalView}>
+        <View style={[styles.modalView, { height: '40%' }]}>
           <View style={styles.inputView}>
             <Text style={text.modalText}>New player's name:</Text>
             <TextInput
@@ -30,6 +30,7 @@ export default function AddPlayersModal({
               value={input}
               autoCapitalize="words"
               maxLength={8}
+              autoFocus
             />
           </View>
           <View style={styles.buttonRowContainer}>
@@ -59,6 +60,6 @@ export default function AddPlayersModal({
           </View>
         </View>
       </View>
-    </Modal>
+    </Modal >
   );
 }

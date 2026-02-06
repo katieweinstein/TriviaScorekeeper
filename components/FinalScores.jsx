@@ -25,15 +25,18 @@ export default function FinalScores({ route, navigation }) {
             .filter((score) => score.player_id === player.id)
             .reduce(reducer, 0)
           : 0;
+
         return (
-          <Text style={text.mainText} key={player.id}>
-            {player.name}:{' '}
-            <Text style={[text.score, { fontSize: 36 }]}>{currentScore}</Text>
-          </Text>
+          <View key={player.id}>
+            <Text style={text.mainText}>
+              {player.name}:{' '}
+              <Text style={[text.score, { fontSize: 36 }]}>{currentScore}</Text>
+            </Text>
+          </View>
         );
       })}
       <Pressable
-        style={buttons.nextButton}
+        style={buttons.home}
         onPress={() => navigation.navigate('Home')}
       >
         <Text style={text.buttonText}>Home</Text>

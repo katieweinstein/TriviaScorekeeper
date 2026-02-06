@@ -54,29 +54,29 @@ export default function DailyDoubleModal({
               maxLength={6}
               keyboardType="number-pad"
             />
-            <Text style={text.score}>
-              Max wager: ${determineMaximumWager()}
-            </Text>
-            <Text style={text.score}>Min wager: $100000</Text>
-          </View>
-          {input > 0 ? (
-            <View style={[styles.buttonRowContainer, { marginTop: 100 }]}>
-              <Pressable
-                style={[buttons.wager, { backgroundColor: 'pink', marginTop: 20 }]}
-                onPress={() => handlePress(-1)}
-              >
-                <Text style={text.smallCentered}>${input * -1}</Text>
-              </Pressable>
-              <Pressable
-                style={[buttons.wager, { backgroundColor: 'green' }]}
-                onPress={() => handlePress(1)}
-              >
-                <Text style={text.smallCentered}>${input}</Text>
-              </Pressable>
+            <View style={{ marginBottom: 30 }}>
+              <Text style={text.score}>
+                Max wager: ${determineMaximumWager()}
+              </Text>
+              <Text style={text.score}>Min wager: $5</Text>
             </View>
-          ) : (
-              <View />
-            )}
+          </View>
+          <View style={styles.buttonRowContainer}>
+            <Pressable
+              style={[buttons.wager, { backgroundColor: input ? 'red' : 'gray' }]}
+              onPress={() => handlePress(-1)}
+              disabled={!input}
+            >
+              <Text style={text.smallCentered}>${input * -1}</Text>
+            </Pressable>
+            <Pressable
+              style={[buttons.wager, { backgroundColor: input ? 'green' : 'gray' }]}
+              onPress={() => handlePress(1)}
+              disabled={!input}
+            >
+              <Text style={text.smallCentered}>${input || 0}</Text>
+            </Pressable>
+          </View>
           <View style={styles.scoreboardButtonContainer}>
             <Pressable
               style={buttons.smallModalButton}

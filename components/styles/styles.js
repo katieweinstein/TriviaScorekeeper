@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.backgroundSecondary,
     borderRadius: 20,
     padding: 35,
-    height: 300,
+    height: '50%',
     alignItems: 'center',
     justifyContent: 'space-evenly',
     shadowColor: colors.black,
@@ -74,6 +74,8 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     fontSize: 24,
+    marginTop: 10,
+    marginBottom: 10
   },
   marginedInput: {
     height: 50,
@@ -174,6 +176,7 @@ export const text = StyleSheet.create({
     fontFamily: 'Trebuchet MS',
     fontSize: 20,
     textAlign: 'center',
+    fontWeight: 900
   },
   scoreHistory: {
     color: 'white',
@@ -372,6 +375,18 @@ export const buttons = StyleSheet.create({
     padding: 7,
     margin: 5,
     borderColor: colors.brickRed,
+    borderWidth: 3,
+  },
+  home: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: 'white',
+    backgroundColor: colors.darkGold,
+    borderRadius: 20,
+    width: 170,
+    padding: 7,
+    margin: 5,
+    borderColor: colors.lightGold,
     borderWidth: 3,
   }
 });
