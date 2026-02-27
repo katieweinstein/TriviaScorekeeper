@@ -3,10 +3,10 @@
     "name": "TriviaScorekeeper",
     "slug": "JeopardyScorekeeper",
     "icon": "./images/icon.png",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "ios": {
       "bundleIdentifier": "triviascorekeeper",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.1"
     },
     "assetBundlePatterns": [
       "**/*"
