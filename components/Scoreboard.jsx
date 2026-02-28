@@ -107,7 +107,7 @@ export default function Scoreboard({ route, navigation }) {
             })
           }
         >
-          <Text style={text.smallCentered}>Final Jeopardy</Text>
+          <Text style={text.smallCentered}>Final Wagers</Text>
         </Pressable>
       </View>
       <Pressable style={buttons.exitGame} onPress={() => setIsExitModalVisible(true)}>

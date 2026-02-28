@@ -34,7 +34,7 @@ export default function ScoringOptions({
         }}
         disabled={typeof moveInfo.player === 'string'}
       >
-        <Text style={text.smallCentered}>Daily Double</Text>
+        <Text style={text.smallCentered}>Double Down</Text>
       </Pressable>
       {/* Negative Score */}
       <Pressable
@@ -56,7 +56,7 @@ export default function ScoringOptions({
         }}
       >
         <Text style={text.smallCentered}>
-          {double ? 'Single Jeopardy' : 'Double Jeopardy'}
+          {double ? 'Single Scoring' : 'Double Scoring'}
         </Text>
       </Pressable>
     </View>

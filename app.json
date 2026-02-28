@@ -6,7 +6,7 @@
     "version": "1.0.0",
     "ios": {
       "bundleIdentifier": "triviascorekeeper",
-      "buildNumber": "2"
+      "buildNumber": "10"
     },
     "assetBundlePatterns": [
       "**/*"
