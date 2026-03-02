@@ -25,6 +25,7 @@ export default function AddPlayersModal({
           <View style={styles.inputView}>
             <Text style={text.modalText}>New player's name:</Text>
             <TextInput
+              key={modalVisible.toString()}
               style={styles.input}
               onChangeText={setInput}
               value={input}
@@ -45,13 +46,13 @@ export default function AddPlayersModal({
             </Pressable>
             <Pressable
               style={buttons.modalButton}
-              onPress={() => {
+              onPress={async () => {
                 if (input.length) {
-                  addPlayerToDB(input);
-                  getPlayers(setPlayersList);
+                  await addPlayerToDB(input);
+                  await getPlayers(setPlayersList);
                   setPlayersInGame([]);
-                  setModalVisible(!modalVisible);
                   setInput('');
+                  setModalVisible(!modalVisible);
                 }
               }}
             >

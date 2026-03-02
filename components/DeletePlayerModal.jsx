@@ -33,9 +33,9 @@ export default function DeletePlayerModal({
             </Pressable>
             <Pressable
               style={buttons.smallModalButton}
-              onPress={() => {
-                deletePlayer(playerToDelete.id);
-                getPlayers(setPlayersList);
+              onPress={async () => {
+                await deletePlayer(playerToDelete.id);
+                await getPlayers(setPlayersList);
                 setModalVisible(!modalVisible);
               }}
             >
@@ -44,6 +44,6 @@ export default function DeletePlayerModal({
           </View>
         </View>
       </View>
-    </Modal>
+    </Modal >
   );
 }
